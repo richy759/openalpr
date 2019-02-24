@@ -24,7 +24,7 @@
 #include <stdint.h>
 #include <vector>
 
-#ifdef WIN32
+#ifdef _WIN32
   #define OPENALPR_DLL_EXPORT __declspec( dllexport )
 #else
   #define OPENALPR_DLL_EXPORT 

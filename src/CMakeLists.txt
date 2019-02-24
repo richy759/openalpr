@@ -136,6 +136,7 @@ if (NOT IOS)
 ENDIF()
 
 if (WIN32) 
+   SET(CMAKE_DEBUG_POSTFIX d)
    SET(OPENALPR_LIB openalpr-static)
 ELSE()
    SET(OPENALPR_LIB openalpr)
