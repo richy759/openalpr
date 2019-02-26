@@ -24,7 +24,7 @@ namespace alpr
     }
     else if (config->detector == DETECTOR_LBP_OPENCL)
     {
-      #if OPENCV_MAJOR_VERSION == 3
+      #if OPENCV_MAJOR_VERSION == 4
       return new DetectorOCL(config, prewarp);
       #else
       std::cerr << "Error: OpenCL acceleration requires OpenCV 3.0.  " << std::endl;

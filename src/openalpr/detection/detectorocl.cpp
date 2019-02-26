@@ -20,7 +20,7 @@
 #include "detectorocl.h"
 #include <support/tinythread.h>
 
-#if OPENCV_MAJOR_VERSION == 3
+#if OPENCV_MAJOR_VERSION == 4
 
 using namespace cv;
 using namespace std;
@@ -118,7 +118,7 @@ namespace alpr
       equalizeHist( openclFrame, openclFrame );
 
       plate_cascade.detectMultiScale( openclFrame, plates, config->detection_iteration_increase, config->detectionStrictness,
-                                      CV_HAAR_DO_CANNY_PRUNING,
+										cv::CASCADE_DO_CANNY_PRUNING,
                                       min_plate_size, max_plate_size );
 
       ocl_detector_mutex_m.unlock();
@@ -128,7 +128,7 @@ namespace alpr
       equalizeHist( orig_frame, orig_frame );
 
       plate_cascade.detectMultiScale( orig_frame, plates, config->detection_iteration_increase, config->detectionStrictness,
-                                      CV_HAAR_DO_CANNY_PRUNING,
+									cv::CASCADE_DO_CANNY_PRUNING,
                                       min_plate_size, max_plate_size );
     }
 
