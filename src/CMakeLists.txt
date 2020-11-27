@@ -115,12 +115,48 @@ include_directories(./openalpr )
 IF (WIN32)
 	add_definitions( -DWINDOWS)
 	add_definitions( -DNOMINMAX)
+	
+	
 
+	if (CMAKE_BUILD_TYPE EQUAL "DEBUG")
+	
+		link_directories(D:\temp\vcpkg\installed\x64-windows-static\debug\lib)
+	
+	   # Extra linker dependencies for Windows
+		SET (Tesseract_LIBRARIES
+			${Tesseract_LIBRARIES}
+			ws2_32.lib
+			zlibd.lib
+			gif.lib
+			jpegd.lib
+			libpng16d.lib
+			tiffd.lib
+			lzmad.lib
+			webpd.lib
+			
+		)
+	else()
 	# Extra linker dependencies for Windows
-	SET (Tesseract_LIBRARIES
-		${Tesseract_LIBRARIES}
-		ws2_32.lib
-	)
+	
+	link_directories(D:\temp\vcpkg\installed\x64-windows-static\lib)
+	
+		SET (Tesseract_LIBRARIES
+			${Tesseract_LIBRARIES}
+			ws2_32.lib
+			zlib.lib
+			gif.lib
+			jpeg.lib
+			libpng16.lib
+			tiff.lib
+			lzma.lib
+			webp.lib
+			
+		)
+
+	endif (CMAKE_BUILD_TYPE EQUAL "DEBUG")
+
+
+	
 ELSE()
 
 	SET (Extra_LIBS
